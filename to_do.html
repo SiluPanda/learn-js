@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        <label for="activity">activity</label>
+        <input type="text" id="activity" name="activity">
+        <label for="appt">Select a time:</label>
+        <input type="time" id="appt" name="appt">
+        <button onclick="verify()">submit</button>
+        
+    
+        <script>
+            function verify() {
+                let activity = document.getElementById("activity").value;
+                let time = document.getElementById("appt").value;
+                if (activity.length > 0) document.getElementById("display").innerHTML += (activity + " at " + time + "<br>");
+                else{
+                    alert("are you ok man");
+                }
+                
+                
+                
+            }
+        </script>
+        <p id = "display"></p>
+        
+    </body>
+</html>
