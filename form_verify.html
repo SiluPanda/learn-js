@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        
+        <label for="username">user name</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="password">password</label><br>
+        <input type="text" id="password" name="password"><br><br>
+        <button onclick="verify()">submit</button>
+        
+    
+        <script>
+            function verify() {
+                let username = document.getElementById("username").value;
+                if (username.length == 0) {
+                    alert("Username can not be empty");
+                    return;
+                }
+                let password = document.getElementById("password").value;
+                let isgood = true;
+                if (password.length < 8) {
+                    document.getElementById("length").innerHTML = "password shoule be 8 char long";
+                    isgood = false;
+                }
+                let lower = 0;
+                let upper = 0
+                let num = 0;
+                for (let i = 0; i < password.length; i++) {
+                    let curr = password.charAt(i);
+                    if (curr == curr.toUpperCase()) upper++;
+                    else if (curr == curr.toLowerCase()) lower++;
+                    if (!isNaN(parseFloat(curr)) && isFinite(curr)) num++;
+                }
+                
+                if (lower == 0) document.getElementById("upper").innerHTML = "min one lower needed", isgood = false;
+                if (upper == 0) document.getElementById("lower").innerHTML = "min one upper needed", isgood = false;
+                if (num == 0) document.getElementById("num").innerHTML = "min one num needed", isgood = false;
+                if (isgood) document.getElementById("length").innerHTML = "all good!"
+                
+            }
+        </script>
+        <p id = "length"></p>
+        <p id = "upper"></p>
+        <p id = "lower"></p>
+        <p id = "num"></p>
+    </body>
+</html>
